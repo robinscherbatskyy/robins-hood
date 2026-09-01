@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { evidenceItems, caseStudies } from '../../lib/resources';
 import { glossary, organizations } from '../../lib/ecosystem';
 import { frameworkCatalog } from '../../lib/frameworks';
@@ -19,5 +20,5 @@ const resources = [
 ];
 
 export default function ResourcesPage() {
-  return <main className="inner-page resources-page"><section className="page-hero resources-hero"><p className="eyebrow dark"><span /> Apply & reference collections</p><div><h1>Find the fact.<br /><em>See its context.</em></h1><p>Nine focused collections keep definitions, frameworks, tools, tutorials, evidence, institutions and real-world application easy to find without flattening them into one generic template.</p></div><aside><strong>{String(resources.length).padStart(2, '0')}</strong><span>resource collections</span><i>Learn · Apply · Reference</i></aside></section><section className="resource-cards">{resources.map((item) => <a className={`resource-card resource-${item.tone}`} href={item.href} key={item.n}><small>{item.count}</small><h2>{item.title}</h2><p>{item.copy}</p><footer className="resource-card-footer"><span>{item.n}</span><b>Open collection →</b></footer></a>)}</section></main>;
+  return <main className="inner-page resources-page"><section className="page-hero resources-hero"><p className="eyebrow dark"><span /> Apply & reference collections</p><div><h1>Find the fact.<br /><em>See its context.</em></h1><p>Nine focused collections keep definitions, frameworks, tools, tutorials, evidence, institutions and real-world application easy to find without flattening them into one generic template.</p></div><aside><strong>{String(resources.length).padStart(2, '0')}</strong><span>resource collections</span><i>Learn · Apply · Reference</i></aside></section><section className="resource-cards">{resources.map((item) => <Link className={`resource-card resource-${item.tone}`} href={item.href} key={item.n}><small>{item.count}</small><h2>{item.title}</h2><p>{item.copy}</p><footer className="resource-card-footer"><span>{item.n}</span><b>Open collection →</b></footer></Link>)}</section></main>;
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { categories, CategoryKey, topics } from '../lib/topics';
 
 const filterGroups: Array<{ label: string; keys: CategoryKey[] }> = [
@@ -59,13 +60,13 @@ export default function LibraryClient() {
           <select value={depth} onChange={(event) => setDepth(event.target.value)} aria-label="Filter by depth"><option value="all">All depth levels</option><option>Foundation</option><option>Applied</option><option>Advanced</option></select>
         </div>
         <div className="result-summary"><span>{filtered.length} guides</span><p>{category === 'all' ? 'The complete connected library' : categories[category].description}</p></div>
-        {selectedPillar && selectedCategory && <a className="library-pillar-return" href={selectedPillar}><span>Primary reading</span><div><strong>Read the complete {selectedCategory.short} pillar</strong><p>Build the full mental model, then return here for focused technical depth.</p></div><i>→</i></a>}
+        {selectedPillar && selectedCategory && <Link className="library-pillar-return" href={selectedPillar}><span>Primary reading</span><div><strong>Read the complete {selectedCategory.short} pillar</strong><p>Build the full mental model, then return here for focused technical depth.</p></div><i>→</i></Link>}
         <div className="topic-grid">
-          {filtered.map((topic) => <a className={`topic-card accent-${categories[topic.category].color}`} href={`/learn/${topic.slug}`} key={topic.id}>
+          {filtered.map((topic) => <Link className={`topic-card accent-${categories[topic.category].color}`} href={`/learn/${topic.slug}`} key={topic.id}>
             <div className="topic-card-top"><i>{topic.depth}</i></div>
             <h2>{topic.title}</h2><p>{topic.summary}</p>
             <div className="topic-card-bottom"><span>{topic.id}</span><span>{topic.categoryLabel}</span><span>{topic.readTime} min →</span></div>
-          </a>)}
+          </Link>)}
         </div>
         {!filtered.length && <div className="no-results"><strong>No guide matches every filter.</strong><p>Remove a filter or try a broader phrase.</p><button onClick={() => { setQuery(''); setCategory('all'); setDepth('all'); }} type="button">Reset filters</button></div>}
       </div>

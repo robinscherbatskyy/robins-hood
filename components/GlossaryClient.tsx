@@ -144,7 +144,7 @@ export default function GlossaryClient({ initialDomain = 'all' }: { initialDomai
             {item.commonConfusion ? <div><span>Common confusion</span><p>{item.commonConfusion}</p></div> : null}
             {item.boundary ? <div><span>Important boundary</span><p>{item.boundary}</p></div> : null}
             {item.version || item.status ? <div><span>Version and status</span><p>{[item.version, item.status, item.lastReviewed ? `Reviewed ${item.lastReviewed}` : ''].filter(Boolean).join(' · ')}</p></div> : null}
-            {item.related?.length ? <div><span>Related</span><p>{item.related.map((related) => <a href={`/glossary?q=${encodeURIComponent(related)}#glossary-index`} key={related}>{related}</a>)}</p></div> : null}
+            {item.related?.length ? <div><span>Related</span><p>{item.related.map((related) => <Link href={`/glossary?q=${encodeURIComponent(related)}#glossary-index`} key={related}>{related}</Link>)}</p></div> : null}
             {guide ? <div><span>Learn in context</span><p><Link href={`/learn/${guide.slug}`}>{guide.title} →</Link></p></div> : null}
             {item.officialUrl ? <div><span>Official or primary source</span><p><a href={item.officialUrl} target="_blank" rel="noreferrer">Open source ↗</a></p></div> : null}
           </div>

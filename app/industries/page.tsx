@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { industries } from '../../lib/ecosystem';
 import IndustryChainExplorer from '../../components/IndustryChainExplorer';
 
@@ -25,7 +26,7 @@ export default function IndustriesPage() {
       <div className="industry-chain-preview"><span>Operating stages</span><div>{industry.valueChain.map((step, stageIndex) => <b key={step}><i>{stageIndex + 1}</i>{step}</b>)}</div><a href="#industry-operating-map">Open interactive map ↑</a></div>
       <div className="industry-decision-lens"><span>Decision in context</span><p>{industry.caseStudy}</p><div><b>Control priorities</b><ol>{industry.priorities.map((item) => <li key={item}>{item}</li>)}</ol></div></div>
       <div className="industry-columns"><div><h3>Systems you meet</h3><ul>{industry.systems.map((item) => <li key={item}>{item}</li>)}</ul></div><div><h3>What must be protected</h3><ul>{industry.crownJewels.map((item) => <li key={item}>{item}</li>)}</ul></div><div><h3>Primary risk families</h3><ul>{industry.risks.map((item) => <li key={item}>{item}</li>)}</ul></div></div>
-      <a href={`/learn/${industryGuideSlugs[industry.slug] ?? industry.slug}`}>Open the complete domain guide →</a>
+      <Link href={`/learn/${industryGuideSlugs[industry.slug] ?? industry.slug}`}>Open the complete domain guide →</Link>
     </article>)}</section>
   </main>;
 }

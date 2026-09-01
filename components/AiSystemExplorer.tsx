@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 const modes = [
   {
@@ -62,6 +63,6 @@ export default function AiSystemExplorer() {
       <div className="ai-system-flow">{mode.path.map((step, index) => <div key={step}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong>{index < mode.path.length - 1 && <i>→</i>}</div>)}</div>
       <div className="ai-mode-detail"><section><span>Concrete example</span><p>{mode.example}</p></section><section><span>Failure boundary</span><p>{mode.failure}</p></section><section><span>Questions that prove understanding</span><ol>{mode.inspect.map((item) => <li key={item}>{item}</li>)}</ol></section></div>
     </article>
-    <div className="ai-vocabulary"><header><span>Vocabulary rail</span><strong>Mechanism before hype</strong></header>{vocabulary.map(([term, meaning]) => <a href={`/glossary?q=${encodeURIComponent(term)}#glossary-index`} key={term}><b>{term}</b><span>{meaning}</span><i>↗</i></a>)}</div>
+    <div className="ai-vocabulary"><header><span>Vocabulary rail</span><strong>Mechanism before hype</strong></header>{vocabulary.map(([term, meaning]) => <Link href={`/glossary?q=${encodeURIComponent(term)}#glossary-index`} key={term}><b>{term}</b><span>{meaning}</span><i>↗</i></Link>)}</div>
   </section>;
 }
