@@ -3763,3 +3763,76 @@ html[data-depth] [data-depth-block] { display: block; }
   .tool-fact-grid article { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .tool-fact-grid article:last-child { border-bottom: 0; }
 }
+
+/* Production interaction guardrails. Keep this block at the physical end of
+   the stylesheet so click focus and older card rules cannot override it. */
+.interactive-constellation:focus-within .orbit-node-field { animation-play-state: running; }
+.interactive-constellation:hover .orbit-node-field { animation-play-state: paused; }
+.sphere-rotator,
+.knowledge-sphere:hover .sphere-rotator,
+.knowledge-sphere:focus-visible .sphere-rotator,
+.interactive-constellation:hover .sphere-rotator,
+.interactive-constellation:focus-within .sphere-rotator { animation-play-state: running; }
+
+.pillar-grid .discipline-card,
+.topic-card,
+.resource-card,
+.pillar-overview-card,
+.case-card,
+.apply-layer > div > a,
+.reference-layer > div > a,
+.atlas-architecture > a {
+  transform: translateZ(0) scale(1);
+  transform-origin: center;
+  will-change: transform, box-shadow;
+  transition: transform .24s cubic-bezier(.2, .75, .25, 1), box-shadow .24s ease, border-color .24s ease, background-color .24s ease;
+}
+.pillar-grid .discipline-card:hover,
+.pillar-grid .discipline-card:focus-visible,
+.topic-card:hover,
+.topic-card:focus-visible,
+.resource-card:hover,
+.resource-card:focus-visible,
+.pillar-overview-card:hover,
+.pillar-overview-card:focus-visible,
+.case-card:hover,
+.case-card:focus-visible,
+.apply-layer > div > a:hover,
+.apply-layer > div > a:focus-visible,
+.reference-layer > div > a:hover,
+.reference-layer > div > a:focus-visible,
+.atlas-architecture > a:hover,
+.atlas-architecture > a:focus-visible {
+  z-index: 3;
+  transform: translateZ(0) scale(1.012);
+  border-color: color-mix(in srgb, #3e745d 48%, var(--line));
+  box-shadow: 0 24px 58px rgba(13, 35, 28, .15);
+  outline: none;
+}
+.discipline-card::before,
+.discipline-card .card-orb,
+.topic-card::after,
+.resource-card::after,
+.pillar-overview-card::after,
+.apply-layer > div > a::after { pointer-events: none; }
+.resource-card:hover::after,
+.resource-card:focus-visible::after,
+.pillar-overview-card:hover::after,
+.pillar-overview-card:focus-visible::after,
+.apply-layer > div > a:hover::after,
+.apply-layer > div > a:focus-visible::after {
+  transform: scale(1.08) rotate(4deg);
+  transition: transform .3s cubic-bezier(.2, .75, .25, 1);
+}
+.reference-layer > div > a:hover,
+.reference-layer > div > a:focus-visible { background: var(--surface-raised); }
+@media (prefers-reduced-motion: reduce) {
+  .pillar-grid .discipline-card,
+  .topic-card,
+  .resource-card,
+  .pillar-overview-card,
+  .case-card,
+  .apply-layer > div > a,
+  .reference-layer > div > a,
+  .atlas-architecture > a { transition: none; }
+}
