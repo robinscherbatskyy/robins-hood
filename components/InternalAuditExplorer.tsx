@@ -1,0 +1,27 @@
+const auditStages = [
+  { title: 'Mandate, charter and independence', question: 'Who authorizes Internal Audit, protects access and receives conclusions?', actions: ['Approve the charter', 'Confirm organizational independence', 'Protect unrestricted access', 'Define escalation'], output: 'Charter, reporting lines and independence confirmation' },
+  { title: 'Audit universe, risk assessment and plan', question: 'Which objectives and uncertainties deserve independent assurance first?', actions: ['Maintain the auditable-entity universe', 'Assess risk and change', 'Consult stakeholders', 'Allocate skills and capacity'], output: 'Risk assessment and governing-body-approved plan' },
+  { title: 'Engagement initiation and survey', question: 'What does the activity do, where can it fail and what assurance already exists?', actions: ['Understand the process and systems', 'Review previous issues', 'Interview owners', 'Map risks and controls'], output: 'Background record and preliminary risk assessment' },
+  { title: 'Objectives, scope, criteria and work program', question: 'What will the engagement conclude, against which criteria and period?', actions: ['Set boundaries', 'Select criteria', 'Define the population', 'Design procedures and sampling'], output: 'Approved scope, work program and evidence plan' },
+  { title: 'Fieldwork and evidence', question: 'What evidence supports or contradicts the expected design and operation?', actions: ['Walk through controls', 'Inspect records', 'Observe activity', 'Reperform or analyze', 'Record limitations'], output: 'Workpapers, test results, exceptions and evidence assessment' },
+  { title: 'Evaluation and findings', question: 'What does the evidence mean for the objective and risk?', actions: ['Validate exceptions', 'Assess cause and consequence', 'Consider compensating controls', 'Reach a scoped conclusion'], output: 'Finding, severity rationale and draft conclusion' },
+  { title: 'Communication and reporting', question: 'Can the audience understand the conclusion, uncertainty and required decision?', actions: ['Confirm facts', 'Discuss disagreement', 'Report conclusions', 'Escalate unresolved exposure'], output: 'Final report, management response and governing-body communication' },
+  { title: 'Action tracking and follow-up', question: 'Did management achieve the agreed outcome, and what risk remains?', actions: ['Track milestones', 'Inspect completion evidence', 'Retest where needed', 'Escalate overdue action'], output: 'Validated closure, reopened finding or residual-risk escalation' },
+  { title: 'Quality assurance and improvement', question: 'Was the work competent, consistent, useful and aligned with standards?', actions: ['Supervise work', 'Perform internal quality reviews', 'Obtain periodic external assessment', 'Improve methods and skills'], output: 'Quality assessment and improvement plan' },
+];
+
+const threeLines = [
+  { name: 'First line', owns: 'Objectives, operations, risk and controls', boundary: 'Risk ownership does not transfer to an oversight team.' },
+  { name: 'Second line', owns: 'Methods, advice, monitoring and credible challenge', boundary: 'It should not quietly own first-line decisions it must challenge.' },
+  { name: 'Internal Audit', owns: 'Independent assurance and advice', boundary: 'It does not design controls, own remediation or accept management risk.' },
+];
+
+export default function InternalAuditExplorer() {
+  return <section className="internal-audit-explorer" id="internal-audit">
+    <header><span>Internal Audit in practice</span><h2>Independent assurance, from mandate to verified follow-up.</h2><p>Internal Audit helps the governing body and management understand whether governance, risk management and control processes are designed and operating well. Independence is protected by mandate, reporting lines, access and freedom from management responsibility.</p></header>
+    <div className="three-lines-grid">{threeLines.map((line, index) => <article key={line.name}><span>{String(index + 1).padStart(2, '0')}</span><h3>{line.name}</h3><strong>{line.owns}</strong><p>{line.boundary}</p></article>)}</div>
+    <div className="audit-lifecycle"><header><span>Engagement and function lifecycle</span><h3>Open a stage to inspect the decision, work and output.</h3></header>{auditStages.map((stage, index) => <details key={stage.title} open={index === 0}><summary><span>{String(index + 1).padStart(2, '0')}</span><strong>{stage.title}</strong><i>＋</i></summary><div><section><b>Question</b><p>{stage.question}</p></section><section><b>Work</b><ul>{stage.actions.map((action) => <li key={action}>{action}</li>)}</ul></section><section><b>Output</b><p>{stage.output}</p></section></div></details>)}</div>
+    <div className="finding-anatomy"><span>Finding anatomy</span><div>{[['Criteria', 'What should be true?'], ['Condition', 'What did the evidence show?'], ['Cause', 'Why did the gap exist?'], ['Consequence', 'Why does it matter?'], ['Action', 'Who will achieve what outcome, by when?']].map(([title, text], index) => <article key={title}><i>{String(index + 1).padStart(2, '0')}</i><strong>{title}</strong><p>{text}</p></article>)}</div></div>
+    <p className="audit-boundary"><strong>Critical boundary</strong> Management owns decisions, controls, remediation and risk acceptance. Internal Audit may advise, but it must preserve the objectivity needed to assess those same areas later.</p>
+  </section>;
+}

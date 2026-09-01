@@ -1,0 +1,36 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'People & Professional Capability: Robin’s Hood', description: 'Social skill, communication, networking, presentation, leadership, negotiation, interviews and live reasoning.' };
+
+const capabilities = [
+  { n: '01', title: 'Social confidence & conversation', promise: 'Create ease without performing.', ideas: ['Regulate your pace before trying to appear confident', 'Ask, listen, acknowledge, contribute, invite', 'Treat body language as a clue: not a verdict'], example: '“That sounds frustrating. Have I understood correctly that the deadline is the main constraint?” is more useful than “I know exactly how you feel.”' },
+  { n: '02', title: 'Listening, empathy & conflict', promise: 'Understand the issue before solving it.', ideas: ['Separate facts, needs, methods and relationship tension', 'Paraphrase the other view fairly', 'Name shared goals and verify assumptions'], example: '“We agree on the outcome. The difference seems to be how much risk we can accept before launch. Is that fair?”' },
+  { n: '03', title: 'Networking & relationships', promise: 'Build trust, not a contact collection.', ideas: ['Research one genuine point of connection', 'Make a focused, respectful ask', 'Follow up with context or value', 'Maintain relationships before you need something'], example: '“I appreciated your explanation of incident learning. I’m exploring how teams turn postmortems into design changes: could I ask how your team keeps actions from becoming a backlog?”' },
+  { n: '04', title: 'Writing & executive communication', promise: 'Help the reader decide and act.', ideas: ['Bottom line first', 'Separate fact, interpretation and recommendation', 'State uncertainty and the decision needed'], example: 'What happened? Why does it matter? What is known? What do you recommend? Who needs to decide by when?' },
+  { n: '05', title: 'Presentation & facilitation', promise: 'Guide a decision, not display everything you know.', ideas: ['Define one governing message', 'Use Situation-Complication-Question-Answer', 'Pause before answering questions', 'Close with the decision or action'], example: 'Open with the audience’s problem, show only the evidence needed to understand it, then recommend a clear next step with its main trade-off.' },
+  { n: '06', title: 'Leadership, delegation & feedback', promise: 'Create clarity and enable ownership.', ideas: ['Set outcome, boundary and decision rights', 'Delegate authority with the work', 'Use Situation-Behavior-Impact feedback', 'Own mistakes visibly'], example: '“In yesterday’s review, the risk was omitted from the summary. The decision was made without that trade-off. Please add it and walk me through how we prevent a repeat.”' },
+  { n: '07', title: 'Negotiation & stakeholders', promise: 'Solve for interests and durable agreement.', ideas: ['Know your Best Alternative to a Negotiated Agreement', 'Identify interests beneath positions', 'Use objective criteria', 'Trade across priorities instead of conceding blindly'], example: 'A title, start date, learning budget, scope and compensation may carry different value to each side. Packages create more room than one-issue bargaining.' },
+  { n: '08', title: 'Interviews & on-the-spot reasoning', promise: 'Show evidence, judgment and honest limits.', ideas: ['Use Situation-Task-Action-Result-Learning for experience', 'Pause and clarify ambiguity', 'Structure the problem before solving', 'Finish with recommendation, risk and next evidence'], example: '“I have not used that tool directly. My understanding is that it supports X. I would verify Y first, begin with Z, and confirm the result using this evidence.”' },
+];
+
+const frameworks = [
+  ['STAR-L', 'Situation → Task → Action → Result → Learning', 'Experience stories with evidence and reflection'],
+  ['PREP', 'Point → Reason → Example → Point', 'Short, unexpected questions'],
+  ['SCQA', 'Situation → Complication → Question → Answer', 'Presentations and decision narratives'],
+  ['CSAR', 'Clarify → Structure → Analyze → Recommend', 'Cases and ambiguous problems'],
+  ['SBI', 'Situation → Behavior → Impact', 'Specific feedback without attacking the person'],
+  ['BATNA / ZOPA', 'Best alternative / zone of possible agreement', 'Negotiation preparation and trade-offs'],
+];
+
+export default function ProfessionalPage() {
+  return <main className="inner-page professional-page">
+    <section className="page-hero professional-hero"><p className="eyebrow dark"><span /> Durable human capability</p><div><h1>Be clear.<br /><em>Be useful. Be human.</em></h1><p>Professional effectiveness is not an interview trick. It is the ability to understand people, express judgment and create progress over years of work.</p></div><aside><strong>08</strong><span>capability studios</span><i>Practice, feedback, reflection</i></aside></section>
+    <section className="conversation-model"><span>The conversation loop</span>{['Notice', 'Ask', 'Listen', 'Acknowledge', 'Contribute', 'Invite', 'Follow up'].map((item, index) => <div key={item}><b>{String(index + 1).padStart(2, '0')}</b><strong>{item}</strong>{index < 6 && <i>→</i>}</div>)}</section>
+    <section className="capability-grid">{capabilities.map((capability) => <article key={capability.n}><span>{capability.n}</span><small>{capability.promise}</small><h2>{capability.title}</h2><ul>{capability.ideas.map((idea) => <li key={idea}>{idea}</li>)}</ul><details><summary>Show a practical example <i>＋</i></summary><p>{capability.example}</p></details></article>)}</section>
+    <section className="framework-studio"><header><p className="eyebrow"><span /> Frameworks are scaffolding, not scripts</p><h2>Structure that helps you think live.</h2><p>Learn the full form, understand why each step exists, then adapt it to the conversation.</p></header><div>{frameworks.map(([name, flow, use]) => <article key={name}><span>{name}</span><strong>{flow}</strong><p>{use}</p></article>)}</div></section>
+    <section className="case-method"><div><p className="eyebrow dark"><span /> On-the-spot questions</p><h2>When you do not know immediately.</h2><p>Silence for a few seconds is not failure. It is often the beginning of a better answer.</p></div><ol>{['Pause and restate the problem', 'Clarify the objective and ambiguity', 'State assumptions', 'Break the problem into parts', 'Reason aloud using evidence', 'Recommend and name the main risk', 'Say what would change your answer'].map((step, index) => <li key={step}><span>{index + 1}</span><strong>{step}</strong></li>)}</ol></section>
+    <section className="question-bank"><header><span>Insightful questions</span><h2>Ask what helps you understand reality.</h2></header><div>{[
+      ['Outcomes', 'What would excellent performance look like after six months?'], ['Trade-offs', 'Which trade-offs occupy this team most often?'], ['Decisions', 'How does the team resolve disagreement between speed, risk and quality?'], ['Learning', 'What do effective people in this role usually learn first?'], ['Culture', 'How are feedback and difficult issues typically handled?'], ['Future', 'Which change is likely to affect this work most over the next year?'],
+    ].map(([label, question]) => <blockquote key={label}><span>{label}</span><p>“{question}”</p></blockquote>)}</div></section>
+  </main>;
+}
