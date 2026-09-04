@@ -10,7 +10,7 @@ export default function SiteFooter() {
       </Link>
     </div>
     <nav className="footer-links" aria-label="Footer navigation">
-      <div><span>Learn</span><Link href="/pillars">Consolidated pillar guides</Link><Link href="/learn">Supporting deep dives</Link><Link href="/paths">Learning paths</Link><Link href="/learning">My learning</Link><Link href="/pillars/people-professional-capability">People and professional capability</Link></div>
+      <div><span>Learn</span><Link href="/pillars">Consolidated pillar guides</Link><Link href="/learn">Supporting deep dives</Link><Link href="/learn/iso-iec-27001-2022-self-study-handbook">ISO/IEC 27001 handbook</Link><Link href="/paths">Learning paths</Link><Link href="/learning">My learning</Link><Link href="/pillars/people-professional-capability">People and professional capability</Link></div>
       <div><span>Apply</span><Link href="/industries">Industry domains</Link><Link href="/cases">Case studies</Link><Link href="/linux">Linux learning lab</Link></div>
       <div><span>Reference</span><Link href="/resources">Resource hub</Link><Link href="/red-blue">Attack and defense guide</Link><Link href="/reports">Reports and evidence</Link><Link href="/glossary#glossary-index">A to Z glossary</Link><Link href="/frameworks">Frameworks and laws</Link><Link href="/organizations">Organizations and standards</Link></div>
     </nav>

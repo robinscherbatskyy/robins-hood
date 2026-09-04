@@ -18,6 +18,11 @@ export type LearningPath = {
 
 export const learningPaths: LearningPath[] = [
   {
+    slug: 'iso-27001-foundation', title: 'ISO/IEC 27001 Foundation', color: 'green', duration: 'Self-paced', audience: 'Future PECB Foundation learners and governance, risk and compliance practitioners',
+    description: 'Master the 2022 ISMS requirements, risk treatment, all 93 Annex A controls, audit and evidence through one handbook and focused supporting guides.',
+    topicSlugs: ['iso-iec-27001-2022-self-study-handbook', 'enterprise-technology-and-cyber-risk-management', 'control-design-operation-testing-and-evidence', 'audit-assurance-attestation-and-certification', 'internal-audit-planning-engagements-findings-and-follow-up', 'governance-accountability-and-policy-systems'],
+  },
+  {
     slug: 'complete-foundation', title: 'Complete foundation', color: 'lime', duration: 'Self-paced', audience: 'Anyone starting from first principles',
     description: 'A broad route from computing and systems to security, risk, industry context and professional practice.',
     topicSlugs: ['business-to-technology-map', 'computing-fundamentals', 'operating-systems-and-processes', 'network-foundations-and-protocol-models', 'software-development-life-cycle-and-delivery-methods', 'cybersecurity-goals-and-principles', 'enterprise-technology-and-cyber-risk-management', 'social-skills-and-professional-presence'],

@@ -4,10 +4,12 @@ import { notFound } from 'next/navigation';
 import GlossaryTermLink from '../../../components/GlossaryTermLink';
 import InteractiveGuideDiagram from '../../../components/InteractiveGuideDiagram';
 import ProgressActions from '../../../components/ProgressActions';
+import Iso27001Handbook from '../../../components/Iso27001Handbook';
 import OsiModelExplorer from '../../../components/OsiModelExplorer';
 import SubjectMatterModule, { subjectModuleLink } from '../../../components/SubjectMatterModule';
 import { estimateGuideReadTime, getGuide } from '../../../lib/guides';
 import { guideOpenerFor } from '../../../lib/guide-openers';
+import { iso27001HandbookSlug } from '../../../lib/iso27001-handbook';
 import { categories, topicBySlug, topics, topicsForCategory } from '../../../lib/topics';
 
 function businessImpactFor(title: string, category: string) {
@@ -58,6 +60,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const topic = topicBySlug.get(slug);
   if (!topic) notFound();
+  if (topic.slug === iso27001HandbookSlug) return <Iso27001Handbook />;
 
   const guide = getGuide(topic);
   const readTime = estimateGuideReadTime(guide);
